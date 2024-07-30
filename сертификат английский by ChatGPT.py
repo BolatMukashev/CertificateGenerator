@@ -5,13 +5,13 @@ from PIL import Image, ImageFont, ImageDraw
 
 
 class CoursesTypes(Enum):
-    PRE_INTERMEDIATE = 'has completed Pre-intermediate English Course'
-    ELEMENTARY = 'has completed Elementary English Course'
-    ELEMENTARY_ONLINE = 'has completed Elementary (online) English Course'
-    BEGINNERS = 'has completed Beginners English Course'
-    WAY_AHEAD = 'has completed Way Ahead English Course'
-    FIRST = 'has completed First English Course'
-    ENJOY = 'has completed Enjoy English Course'
+    PRE_INTERMEDIATE = 'Pre-intermediate English Course'
+    ELEMENTARY = 'Elementary English Course'
+    ELEMENTARY_ONLINE = 'Elementary (online) English Course'
+    BEGINNERS = 'Beginners English Course'
+    WAY_AHEAD = 'Way Ahead English Course'
+    FIRST = 'First English Course'
+    ENJOY = 'Enjoy English Course'
 
 
 class CertificateGenerator:
@@ -30,7 +30,7 @@ class CertificateGenerator:
             font_to_name = ImageFont.truetype(self.font_to_name, 120)
             font_to_text = ImageFont.truetype(self.font_to_text, 72)
             draw.text((1750, 1240), name, (51, 98, 105), font=font_to_name, anchor='mb')
-            draw.text((1770, 1350), course, (51, 98, 105), font=font_to_text, anchor='mb')
+            draw.text((1770, 1350), f"has completed {course}", (51, 98, 105), font=font_to_text, anchor='mb')
             draw.text((1100, 2038), date, (51, 98, 105), font=font_to_text, anchor='ms')
             resized_image.save(Path(output_path, name + '.jpg'), 'JPEG', quality=100, dpi=(300, 300))
 
