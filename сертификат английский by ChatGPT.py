@@ -43,7 +43,7 @@ with open('names.txt', 'r') as file:
 course = CoursesTypes.ELEMENTARY_ONLINE
 date = "June 2023"
 
-save_path = Path("C:/Users/bolat/Desktop/Client/", course.name)
+save_path = Path(r"C:\Users\Astana\Desktop\Client", course.name)
 save_path.mkdir(parents=True, exist_ok=True)
 
 if len(names) == 1:
@@ -51,9 +51,9 @@ if len(names) == 1:
 
 
 certificate_generator = CertificateGenerator(
-    template_path="C:/Users/bolat/Desktop/my_programs/CertificateGenerator/Certificate english английский.jpg",
-    font_to_name="C:/Windows/Fonts/Cassandra.ttf",
-    font_to_text="C:/Windows/Fonts/ebrima.ttf",
+    template_path="Certificate english английский.jpg",
+    font_to_name="fonts/cassandra.ttf",
+    font_to_text="fonts/Ebrima.ttf",
     output_path=save_path
 )
 
