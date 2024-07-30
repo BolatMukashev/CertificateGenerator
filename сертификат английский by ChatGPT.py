@@ -20,13 +20,15 @@ class CoursesTypes(Enum):
 
 
 class CertificateGenerator:
-    def __init__(self, template_path, font_to_name, font_to_text, output_path):
-        self.template_path = template_path
-        self.font_to_name = font_to_name
-        self.font_to_text = font_to_text
-        self.output_path = output_path
+    save_path = Path(r"C:\Users\Astana\Desktop\Client")
+    template_path="Certificate english английский.jpg"
+    font_to_name="fonts/cassandra.ttf"
+    font_to_text="fonts/Ebrima.ttf"
 
-    def generate_certificate(self, name, course, date):
+    def __init__(self):
+        pass
+
+    def generate_certificate(self, name, course, date, output_path):
         with Image.open(self.template_path) as img:
             resized_image = img.resize((3507, 2480), resample=Image.Resampling.LANCZOS)
             draw = ImageDraw.Draw(resized_image)
@@ -35,27 +37,24 @@ class CertificateGenerator:
             draw.text((1750, 1240), name, (51, 98, 105), font=font_to_name, anchor='mb')
             draw.text((1770, 1350), course, (51, 98, 105), font=font_to_text, anchor='mb')
             draw.text((1100, 2038), date, (51, 98, 105), font=font_to_text, anchor='ms')
-            resized_image.save(Path(self.output_path, name + '.jpg'), 'JPEG', quality=100, dpi=(300, 300))
+            resized_image.save(Path(output_path, name + '.jpg'), 'JPEG', quality=100, dpi=(300, 300))
 
-with open('names.txt', 'r') as file:
-    names = file.read().splitlines()
+    def go_this(self, date, course:CoursesTypes):
 
-course = CoursesTypes.ELEMENTARY_ONLINE
-date = "June 2023"
+        with open('names.txt', 'r') as file:
+            names = file.read().splitlines()
 
-save_path = Path(r"C:\Users\Astana\Desktop\Client", course.name)
-save_path.mkdir(parents=True, exist_ok=True)
+        output_path = Path.joinpath(self.save_path, course.name)
+        output_path.mkdir(parents=True, exist_ok=True)
 
-if len(names) == 1:
-    names = names[0].split(', ')
+        if len(names) == 1:
+            names = names[0].split(', ')
+
+        for name in names:
+            self.generate_certificate(name, course.value, date, output_path)
 
 
-certificate_generator = CertificateGenerator(
-    template_path="Certificate english английский.jpg",
-    font_to_name="fonts/cassandra.ttf",
-    font_to_text="fonts/Ebrima.ttf",
-    output_path=save_path
-)
-
-for name in names:
-    certificate_generator.generate_certificate(name, course.value, date)
+if __name__ == '__main__':
+    date = "May 2024"
+    course = CoursesTypes.FIRST
+    sertificates = CertificateGenerator().go_this(date, course)
