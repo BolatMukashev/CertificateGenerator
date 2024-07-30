@@ -4,11 +4,6 @@ from pathlib import Path
 from PIL import Image, ImageFont, ImageDraw
 
 
-# path = "C:/Windows/Fonts"
-# fonts = os.listdir(path)
-# print(fonts)
-
-
 class CoursesTypes(Enum):
     PRE_INTERMEDIATE = 'has completed Pre-intermediate English Course'
     ELEMENTARY = 'has completed Elementary English Course'
@@ -56,5 +51,5 @@ class CertificateGenerator:
 
 if __name__ == '__main__':
     date = "May 2024"
-    course = CoursesTypes.FIRST
+    course = CoursesTypes.ENJOY
     sertificates = CertificateGenerator().go_this(date, course)
