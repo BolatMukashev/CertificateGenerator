@@ -1,4 +1,3 @@
-import os
 from enum import Enum
 from pathlib import Path
 from PIL import Image, ImageFont, ImageDraw
