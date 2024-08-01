@@ -5,6 +5,7 @@ from PIL import Image, ImageFont, ImageDraw
 
 class CoursesTypes(Enum):
     PRE_INTERMEDIATE = 'Pre-intermediate English Course'
+    INTERMEDIATE = 'Intermediate English Course'
     ELEMENTARY = 'Elementary English Course'
     ELEMENTARY_ONLINE = 'Elementary (online) English Course'
     BEGINNERS = 'Beginners English Course'
@@ -49,6 +50,6 @@ class CertificateGenerator:
 
 
 if __name__ == '__main__':
-    date = "May 2024"
-    course = CoursesTypes.ENJOY
+    date = "June 2024"
+    course = CoursesTypes.ELEMENTARY
     sertificates = CertificateGenerator().go_this(date, course)
