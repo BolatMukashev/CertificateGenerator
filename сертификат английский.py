@@ -50,6 +50,9 @@ class CertificateGenerator:
 
 
 if __name__ == '__main__':
-    date = "June 2024"
-    course = CoursesTypes.ELEMENTARY
+    date = "May 2025"
+    course = CoursesTypes.INTERMEDIATE
+    # number = 0
     sertificates = CertificateGenerator().go_this(date, course)
+
+# TODO цифра в названии курса
